@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="valley_bai2" resource="default" engine="innodb" comment="Valley Table">
+        <!-- identity="true" giá trị của cột tự động tăng -->
+        <column xsi:type="int" name="valley_id" unsigned="true" nullable="false" identity="true" comment="Valley ID"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image"/>
+        <column xsi:type="varchar" name="link" nullable="false" length="255" comment="Link"/>
+
+        <!-- Khai báo khóa chính ở đây -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="valley_id"/>
+        </constraint>
+    </table>
+</schema>

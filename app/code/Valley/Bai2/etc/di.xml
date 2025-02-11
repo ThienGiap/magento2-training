@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!--
+/home/thiengiap/Projects/magento2dev/app/code/Valley/Bai2/etc/di.xml
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Framework\App\ActionInterface" type="Valley\Bai2\Controller\Index\Index" />
+</config>
