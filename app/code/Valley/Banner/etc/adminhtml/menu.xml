@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Valley_Banner::banner_manager" title="Banner Manager" module="Valley_Banner" action="banner/index/index" sortOrder="10" resource="Valley_Banner::banner_manager"/>
+        <add id="Valley_Banner::list_banner" title="List Banner" module="Valley_Banner" parent="Valley_Banner::banner_manager" action="banner/index/index" resource="Valley_Banner::banner_manager"/>
+    </menu>
+</config>

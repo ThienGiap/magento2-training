@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="banner" resource="default" engine="innodb" comment="Banner Table">
+        <!-- identity="true" giá trị của cột tự động tăng -->
+        <column xsi:type="int" name="id" unsigned="false" nullable="false" identity="true" comment="Banner Id"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image"/>
+        <column xsi:type="varchar" name="link" nullable="false" length="255" comment="Link"/>
+        <column xsi:type="smallint" name="sort_order" nullable="false" comment="Sort Order"/>
+        <column xsi:type="tinyint" name="status" nullable="false" default="1" comment="Status: 1 is Enable, 0 is Disable"/>
+        <column xsi:type="timestamp" name="created_at" nullable="true" comment="Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="true" comment="Update Time"/>
+
+        <!-- Khai báo khóa chính ở đây -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

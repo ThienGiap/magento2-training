@@ -360,6 +360,7 @@ return [
         'PayPal_BraintreeGiftWrapping' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Valley_Bai1' => 1,
-        'Valley_Bai2' => 1
+        'Valley_Bai2' => 1,
+        'Valley_Banner' => 1
     ]
 ];
