@@ -11,6 +11,6 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(\Valley\Banner\Model\Banner::class, \Valley\Banner\Model\ResourceModel\Banner::class);
+        $this->_init('Valley\Banner\Model\Banner', 'Valley\Banner\Model\ResourceModel\Banner');
     }
 }

@@ -71,7 +71,7 @@ class Edit extends \Magento\Backend\App\Action implements HttpGetActionInterface
     {
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('id'); // Get the ID from the URL
-        $model = $this->_objectManager->create(\Valley\Banner\Model\Banner::class);
+        $model = $this->_objectManager->create('Valley\Banner\Model\Banner');
 
         // 2. Initial checking, if ID is not exist then will create new data
         if ($id) {

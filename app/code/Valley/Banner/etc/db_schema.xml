@@ -7,8 +7,8 @@
         <column xsi:type="varchar" name="link" nullable="false" length="255" comment="Link"/>
         <column xsi:type="smallint" name="sort_order" nullable="false" comment="Sort Order"/>
         <column xsi:type="tinyint" name="status" nullable="false" default="1" comment="Status: 1 is Enable, 0 is Disable"/>
-        <column xsi:type="timestamp" name="created_at" nullable="true" comment="Created Time"/>
-        <column xsi:type="timestamp" name="updated_at" nullable="true" comment="Update Time"/>
+        <column xsi:type="timestamp" name="created_at" default="CURRENT_TIMESTAMP" nullable="true" comment="Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" default="CURRENT_TIMESTAMP" nullable="true" comment="Update Time"/>
 
         <!-- Khai báo khóa chính ở đây -->
         <constraint xsi:type="primary" referenceId="PRIMARY">
