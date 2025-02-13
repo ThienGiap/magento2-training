@@ -51,10 +51,13 @@ class Save extends Action implements HttpPostActionInterface
         if ($data) {
             // Optimize data
             if (isset($data['status']) && $data['status'] === 'true') {
-                $data['status'] = Banner::STATUS_ENABLED;
+                $data['status'] = Banner::STATUS_ENABLED;   
             }
             if (empty($data['id'])) {
                 $data['id'] = null;
+            }
+            if (empty($data['images'])) {
+                $data['images'] = null;
             }
 
             // Init model and load by ID if exists
@@ -63,6 +66,8 @@ class Save extends Action implements HttpPostActionInterface
             if ($id) {
                 $model->load($id);
             }
+
+            $data['image'] = $data['images'][0]['name']; // Save image name to database
 
             // Validate data
             if (!$this->dataProcessor->validateRequireEntry($data)) {
