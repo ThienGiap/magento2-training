@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 declare(strict_types=1);
 
 namespace Valley\Banner\Controller\Adminhtml\Index;
@@ -36,8 +38,7 @@ class Save extends Action implements HttpPostActionInterface
         Action\Context $context,
         PostDataProcessor $dataProcessor,
         DataPersistorInterface $dataPersistor
-    )
-    {
+    ) {
         $this->dataProcessor = $dataProcessor;
         $this->dataPersistor = $dataPersistor;
         parent::__construct($context);
@@ -51,13 +52,19 @@ class Save extends Action implements HttpPostActionInterface
         if ($data) {
             // Optimize data
             if (isset($data['status']) && $data['status'] === 'true') {
-                $data['status'] = Banner::STATUS_ENABLED;   
+                $data['status'] = Banner::STATUS_ENABLED;
             }
             if (empty($data['id'])) {
                 $data['id'] = null;
             }
             if (empty($data['images'])) {
                 $data['images'] = null;
+            } else {
+                if ($data['images'][0] && $data['images'][0]['name']) {
+                    $data['image'] = $data['images'][0]['name'];
+                } else {
+                    $data['image'] = null;
+                }
             }
 
             // Init model and load by ID if exists
@@ -67,7 +74,6 @@ class Save extends Action implements HttpPostActionInterface
                 $model->load($id);
             }
 
-            $data['image'] = $data['images'][0]['name']; // Save image name to database
 
             // Validate data
             if (!$this->dataProcessor->validateRequireEntry($data)) {
@@ -77,6 +83,11 @@ class Save extends Action implements HttpPostActionInterface
 
             // Update model
             $model->setData($data);
+
+            echo "<pre>";
+            var_dump($model->setData($data));
+            die;
+            echo "</pre>";
 
             // Save data to database
             try {

@@ -62,17 +62,6 @@
                     </filters>
                 </templates>
             </settings>
-            <filterSelect name="store_id" provider="${ $.parentName }">
-                <settings>
-                    <captionValue>0</captionValue>
-                    <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
-                    <label translate="true">Store View</label>
-                    <dataScope>store_id</dataScope>
-                    <imports>
-                        <link name="visible">ns = ${ $.ns }, index = ${ $.index }:visible</link>
-                    </imports>
-                </settings>
-            </filterSelect>
         </filters>
         <massaction name="listing_massaction">
             <action name="delete">
@@ -81,21 +70,21 @@
                         <message translate="true">Are you sure you want to delete selected items?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
-                    <url path="cms/page/massDelete"/>
+                    <url path="banner/index/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>
             </action>
             <action name="disable">
                 <settings>
-                    <url path="cms/page/massDisable"/>
+                    <url path="banner/index/massDisable"/>
                     <type>disable</type>
                     <label translate="true">Disable</label>
                 </settings>
             </action>
             <action name="enable">
                 <settings>
-                    <url path="cms/page/massEnable"/>
+                    <url path="banner/index/massEnable"/>
                     <type>enable</type>
                     <label translate="true">Enable</label>
                 </settings>
@@ -117,7 +106,7 @@
         <settings>
             <editorConfig>
                 <param name="clientConfig" xsi:type="array">
-                    <item name="saveUrl" xsi:type="url" path="cms/page/inlineEdit"/>
+                    <item name="saveUrl" xsi:type="url" path="banner/index/inlineEdit"/>
                     <item name="validateBeforeSave" xsi:type="boolean">false</item>
                 </param>
                 <param name="indexField" xsi:type="string">id</param>
@@ -149,17 +138,16 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="image">
-            <settings>
-                <filter>text</filter>
-                <editor>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">true</rule>
-                    </validation>
-                    <editorType>text</editorType>
-                </editor>
-                <label translate="true">Image</label>
-            </settings>
+        <column name="image" class="Valley\Banner\Ui\Component\Listing\Columns\Thumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="altField" xsi:type="string">link</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                </item>
+            </argument>
         </column>
         <column name="link">
             <settings>
@@ -221,7 +209,7 @@
                 <label translate="true">Updated</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Cms\Ui\Component\Listing\Column\PageActions">
+        <actionsColumn name="actions" class="Valley\Banner\Ui\Component\Listing\Columns\Actions">
             <settings>
                 <indexField>id</indexField>
                 <resizeEnabled>false</resizeEnabled>
